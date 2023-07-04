@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Jeshika\\Research\\GoogleDrive_FHIRDocumentReference\\GoogleDrive_FHIRDocumentReference\\GoogleDrive_FHIRDocumentReference.csproj": {}
+    "D:\\Jeshika\\Research\\FHIRDocumentReference_withGdrive\\FHIRDocumentReference_GDrive\\GoogleDrive_FHIRDocumentReference\\GoogleDrive_FHIRDocumentReference\\GoogleDrive_FHIRDocumentReference.csproj": {}
   },
   "projects": {
-    "D:\\Jeshika\\Research\\GoogleDrive_FHIRDocumentReference\\GoogleDrive_FHIRDocumentReference\\GoogleDrive_FHIRDocumentReference.csproj": {
+    "D:\\Jeshika\\Research\\FHIRDocumentReference_withGdrive\\FHIRDocumentReference_GDrive\\GoogleDrive_FHIRDocumentReference\\GoogleDrive_FHIRDocumentReference\\GoogleDrive_FHIRDocumentReference.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Jeshika\\Research\\GoogleDrive_FHIRDocumentReference\\GoogleDrive_FHIRDocumentReference\\GoogleDrive_FHIRDocumentReference.csproj",
+        "projectUniqueName": "D:\\Jeshika\\Research\\FHIRDocumentReference_withGdrive\\FHIRDocumentReference_GDrive\\GoogleDrive_FHIRDocumentReference\\GoogleDrive_FHIRDocumentReference\\GoogleDrive_FHIRDocumentReference.csproj",
         "projectName": "GoogleDrive_FHIRDocumentReference",
-        "projectPath": "D:\\Jeshika\\Research\\GoogleDrive_FHIRDocumentReference\\GoogleDrive_FHIRDocumentReference\\GoogleDrive_FHIRDocumentReference.csproj",
+        "projectPath": "D:\\Jeshika\\Research\\FHIRDocumentReference_withGdrive\\FHIRDocumentReference_GDrive\\GoogleDrive_FHIRDocumentReference\\GoogleDrive_FHIRDocumentReference\\GoogleDrive_FHIRDocumentReference.csproj",
         "packagesPath": "C:\\Users\\forim\\.nuget\\packages\\",
-        "outputPath": "D:\\Jeshika\\Research\\GoogleDrive_FHIRDocumentReference\\GoogleDrive_FHIRDocumentReference\\obj\\",
+        "outputPath": "D:\\Jeshika\\Research\\FHIRDocumentReference_withGdrive\\FHIRDocumentReference_GDrive\\GoogleDrive_FHIRDocumentReference\\GoogleDrive_FHIRDocumentReference\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

@@ -1,4 +1,6 @@
 ﻿using Google.Apis.Auth.OAuth2;
+using Google.Apis.Auth.OAuth2.Flows;
+using Google.Apis.Auth.OAuth2.Responses;
 using Google.Apis.Drive.v3;
 using Google.Apis.Services;
 using Google.Apis.Upload;
@@ -15,7 +17,7 @@ namespace GoogleDrive_FHIRDocumentReference.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        static string[] Scopes = { DriveService.Scope.Drive, DriveService.Scope.DriveFile };
+        static string[] Scopes = { DriveService.Scope.Drive };
         static string ApplicationName = "Drive API .NET Quickstart";
         //private const string PathToServiceAccountKeyFile = @"D:\Jeshika\Other\Xiao_Laoshi\MVC_Web_Upload_Gdrive\MVC_Web_Upload_Gdrive\WebUploadtoGdrive\WebUploadtoGdrive\Json\credentials.json";
         //public static string mediaJson = @"D:\Jeshika\Other\Xiao_Laoshi\ConsoleTestDriveApi\ConsoleTestDriveApi\FHIR_Media.json";
@@ -42,7 +44,8 @@ namespace GoogleDrive_FHIRDocumentReference.Controllers
         {
             if (User.Identity.IsAuthenticated)
             {
-                //using (var stream =new FileStream(Configuration["PathToServiceAccountKeyFile"], FileMode.Open, FileAccess.Read))
+                //var credential = GoogleCredential.FromStream(new FileStream(Configuration["PathToServiceAccountKeyFile"], FileMode.Open, FileAccess.Read));
+                //using (var stream = new FileStream(Configuration["PathToServiceAccountKeyFile"], FileMode.Open, FileAccess.Read))
                 //{
 
                 //    /* The file token.json stores the user's access and refresh tokens, and is created
@@ -56,6 +59,41 @@ namespace GoogleDrive_FHIRDocumentReference.Controllers
                 //        new FileDataStore(credPath, true)).Result;
                 //    Console.WriteLine("Credential file saved to: " + credPath);
                 //}
+                var x = CancellationToken.None;
+                var clientSecrets = await GoogleClientSecrets.FromFileAsync(Configuration["PathToServiceAccountKeyFile"]);
+                var credential = await GoogleWebAuthorizationBroker.AuthorizeAsync( clientSecrets.Secrets,new[] { DriveService.Scope.Drive },"user",CancellationToken.None);
+
+                var driveService = new DriveService(new BaseClientService.Initializer()
+                {
+                    HttpClientInitializer = credential
+                });
+
+                //ClientSecrets secrets = new ClientSecrets()
+                //{
+                //    ClientId = "",
+                //    ClientSecret = ""
+                //};
+
+                //var token = new TokenResponse { RefreshToken = "" };
+                //var credentials = new UserCredential(new GoogleAuthorizationCodeFlow(
+                //    new GoogleAuthorizationCodeFlow.Initializer
+                //    {
+                //        ClientSecrets = secrets
+                //    }),
+                //    "user",
+                //    token);
+
+                //var service = new YouTubeService(new BaseClientService.Initializer()
+                //{
+                //    HttpClientInitializer = credentials,
+                //    ApplicationName = "TestProject"
+                //});
+                //var credential = await GoogleCredential.FromFileAsync(Configuration["PathToServiceAccountKeyFile"], CancellationToken.None);
+                //var service = new DriveService(new BaseClientService.Initializer()
+                //{
+                //    HttpClientInitializer = credential,
+                //    ApplicationName = "Google Drive API Example",
+                //});
 
                 //// Load the Service account credentials and define the scope of its access.
                 //var credential = GoogleCredential.FromFile(@"D:\Jeshika\Research\GoogleDrive_FHIRDocumentReference\GoogleDrive_FHIRDocumentReference\Data\jsoncredentials.json")
@@ -122,7 +160,7 @@ namespace GoogleDrive_FHIRDocumentReference.Controllers
                 //// Panggil metode UploadImage untuk mengunggah gambar
                 //string fileId = googleDriveService.UploadImage(filePath, imageBytes);
 
-                return View("UploadToGDrive");
+                return View("UploadToGDrive.cshtml");
             }
             else
             {
@@ -132,6 +170,10 @@ namespace GoogleDrive_FHIRDocumentReference.Controllers
         }
         [Authorize]
         public IActionResult Privacy()
+        {
+            return View();
+        }
+        public IActionResult UploadToGDrive()
         {
             return View();
         }

@@ -1,6 +1,7 @@
 using GoogleDrive_FHIRDocumentReference.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 
 var builder = WebApplication.CreateBuilder(args);
 var configuration = builder.Configuration;
@@ -8,6 +9,7 @@ builder.Services.AddAuthentication().AddGoogle(googleOptions =>
 {
     googleOptions.ClientId = configuration["Authentication:Google:ClientId"];
     googleOptions.ClientSecret = configuration["Authentication:Google:ClientSecret"];
+    googleOptions.SaveTokens = true;
 });
 // Add services to the container.
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
